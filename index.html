@@ -173,14 +173,34 @@
       align-items: center;
       justify-content: center;
       box-shadow: var(--shadow-chip);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .brand-mark img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
     }
 
     .brand-mark span {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
         Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 0.8rem;
       color: #0b1120;
       font-weight: 700;
+      transition: opacity 0.2s ease;
+    }
+
+    .brand-mark.has-photo span {
+      opacity: 0;
     }
 
     .brand-text-main {
@@ -1135,7 +1155,8 @@
   <header>
     <div class="nav-inner">
       <div class="brand">
-        <div class="brand-mark">
+        <div class="brand-mark has-photo">
+          <img src="assets/brandon-headshot.jpg" alt="Brandon Ngwenya" />
           <span>BN</span>
         </div>
         <div>
