@@ -8,6 +8,41 @@
     name="description"
     content="Single-page resume site for Software Engineer Brandon Ngwenya. Microservices, cloud, DevOps, .NET, Python, Angular, Kubernetes."
   />
+  <meta property="og:title" content="Brandon Ngwenya | Software Engineer" />
+  <meta
+    property="og:description"
+    content="Single-page resume site for Software Engineer Brandon Ngwenya. Microservices, cloud, DevOps, .NET, Python, Angular, Kubernetes."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ngwenyabub.github.io" />
+  <meta property="og:image" content="https://ngwenyabub.github.io/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Brandon Ngwenya | Software Engineer" />
+  <meta
+    name="twitter:description"
+    content="Single-page resume site for Software Engineer Brandon Ngwenya. Microservices, cloud, DevOps, .NET, Python, Angular, Kubernetes."
+  />
+  <meta name="twitter:image" content="https://ngwenyabub.github.io/og-image.png" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Brandon Ngwenya",
+      "jobTitle": "Software Engineer",
+      "url": "https://ngwenyabub.github.io",
+      "email": "mailto:bervelngwenya@gmail.com",
+      "telephone": "+27730110201",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cape Town",
+        "addressCountry": "ZA"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/bngweny",
+        "https://github.com/ngwenyabub"
+      ]
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -63,6 +98,25 @@
       color: var(--text);
       min-height: 100vh;
       line-height: 1.6;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0.75rem;
+      background: #0ea5e9;
+      color: #0b1120;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: var(--shadow-chip);
+      text-decoration: none;
+      z-index: 50;
+      transition: left 0.15s ease;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
     }
 
     /* Layout */
@@ -202,7 +256,7 @@
       font-size: 0.75rem;
     }
 
-    .nav-cta .primary-btn {
+    .primary-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
@@ -221,7 +275,7 @@
       white-space: nowrap;
     }
 
-    .nav-cta .primary-btn:hover {
+    .primary-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 18px 40px rgba(56, 189, 248, 0.6);
       filter: brightness(1.05);
@@ -834,6 +888,37 @@
       color: var(--muted);
     }
 
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text);
+      font-size: 0.72rem;
+      text-decoration: none;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .project-link i {
+      color: var(--accent);
+      font-size: 0.75rem;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
     /* Education */
 
     .edu-grid {
@@ -1046,6 +1131,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to main content</a>
   <header>
     <div class="nav-inner">
       <div class="brand">
@@ -1077,7 +1163,14 @@
         </a>
       </div>
 
-      <button class="burger" id="burger" aria-label="Toggle navigation">
+      <button
+        class="burger"
+        id="burger"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="mobileNav"
+        type="button"
+      >
         <span></span>
       </button>
     </div>
@@ -1089,6 +1182,10 @@
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
+        <a href="Brandon_Ngwenya_Resume.pdf" class="primary-btn" download>
+          <i class="fa-solid fa-file-arrow-down"></i>
+          Download resume
+        </a>
         <a href="mailto:bervelngwenya@gmail.com" class="primary-btn">
           <i class="fa-regular fa-envelope"></i>
           Email me
@@ -1130,6 +1227,10 @@
           </div>
 
           <div class="hero-actions">
+            <a href="Brandon_Ngwenya_Resume.pdf" class="primary-btn" download>
+              <i class="fa-solid fa-file-arrow-down"></i>
+              Download resume
+            </a>
             <a href="#experience" class="btn-ghost">
               <i class="fa-solid fa-diagram-project"></i>
               View experience
@@ -1437,6 +1538,24 @@
                 <span>Azure</span>
                 <span>CI/CD</span>
               </div>
+              <div class="project-links">
+                <a
+                  class="project-link"
+                  href="mailto:bervelngwenya@gmail.com?subject=Project%20chat%3A%20Leave%20Management%20System"
+                >
+                  <i class="fa-solid fa-rocket"></i>
+                  <span>Request walkthrough</span>
+                </a>
+                <a
+                  class="project-link"
+                  href="https://github.com/ngwenyabub"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="fa-solid fa-code"></i>
+                  <span>Code samples</span>
+                </a>
+              </div>
             </div>
           </article>
 
@@ -1453,6 +1572,24 @@
                 <span>C#</span>
                 <span>Security</span>
                 <span>Observability</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="project-link"
+                  href="mailto:bervelngwenya@gmail.com?subject=Project%20chat%3A%20URL%20Shortener%20%26%20Sanitizer"
+                >
+                  <i class="fa-solid fa-rocket"></i>
+                  <span>Request walkthrough</span>
+                </a>
+                <a
+                  class="project-link"
+                  href="https://github.com/ngwenyabub"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="fa-solid fa-code"></i>
+                  <span>Code samples</span>
+                </a>
               </div>
             </div>
           </article>
@@ -1471,6 +1608,24 @@
                 <span>RabbitMQ</span>
                 <span>PostgreSQL</span>
                 <span>Kubernetes · Docker</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="project-link"
+                  href="mailto:bervelngwenya@gmail.com?subject=Project%20chat%3A%20Order%20Processing%20Microservices"
+                >
+                  <i class="fa-solid fa-rocket"></i>
+                  <span>Request walkthrough</span>
+                </a>
+                <a
+                  class="project-link"
+                  href="https://github.com/ngwenyabub"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="fa-solid fa-code"></i>
+                  <span>Code samples</span>
+                </a>
               </div>
             </div>
           </article>
@@ -1555,6 +1710,14 @@
             <div class="contact-link-row">
               <a
                 class="contact-chip-link"
+                href="Brandon_Ngwenya_Resume.pdf"
+                download
+              >
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Download resume (PDF)</span>
+              </a>
+              <a
+                class="contact-chip-link"
                 href="https://github.com/ngwenyabub"
                 target="_blank"
                 rel="noreferrer"
@@ -1586,14 +1749,26 @@
     const burger = document.getElementById("burger");
     const mobileNav = document.getElementById("mobileNav");
 
+    const setNavOpen = (isOpen) => {
+      mobileNav.classList.toggle("open", isOpen);
+      burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    };
+
     burger.addEventListener("click", () => {
-      mobileNav.classList.toggle("open");
+      const nextState = !mobileNav.classList.contains("open");
+      setNavOpen(nextState);
     });
 
     // Close mobile nav on link click
     mobileNav.addEventListener("click", (e) => {
       if (e.target.tagName.toLowerCase() === "a") {
-        mobileNav.classList.remove("open");
+        setNavOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        setNavOpen(false);
       }
     });
 
