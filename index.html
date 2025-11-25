@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brandon Ngwenya | Software Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Single-page resume site for Software Engineer Brandon Ngwenya. Microservices, cloud, DevOps, .NET, Python, Angular, Kubernetes."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1120;
+      --bg-soft: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --accent-strong: #0ea5e9;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --danger: #fb7185;
+
+      --radius-lg: 1.25rem;
+      --radius-full: 999px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.95);
+      --shadow-chip: 0 10px 30px rgba(15, 23, 42, 0.85);
+
+      --nav-height: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #1f2937 0, transparent 45%),
+        radial-gradient(circle at bottom, #020617 0, transparent 55%),
+        var(--bg-soft);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Layout */
+
+    .page-shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      height: var(--nav-height);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-mark {
+      height: 34px;
+      width: 34px;
+      border-radius: 0.9rem;
+      background: conic-gradient(
+        from 200deg,
+        var(--accent),
+        #22c55e,
+        #a855f7,
+        var(--accent)
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-chip);
+    }
+
+    .brand-mark span {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+        Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      color: #0b1120;
+      font-weight: 700;
+    }
+
+    .brand-text-main {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+    }
+
+    .brand-text-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: 0.85rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s ease, transform 0.15s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.35rem;
+      height: 2px;
+      border-radius: 999px;
+      background: radial-gradient(circle at center, var(--accent), transparent);
+      opacity: 0;
+      transform: scaleX(0.2);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    nav a:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      color: var(--muted);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.85);
+    }
+
+    .nav-contact-pill i {
+      color: var(--accent);
+      font-size: 0.75rem;
+    }
+
+    .nav-cta .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      background: radial-gradient(circle at top left, var(--accent), #0ea5e9);
+      color: #0b1120;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(56, 189, 248, 0.45);
+      text-decoration: none;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        filter 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .nav-cta .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.6);
+      filter: brightness(1.05);
+    }
+
+    .burger {
+      display: none;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      border-radius: 0.75rem;
+      padding: 0.45rem 0.55rem;
+      background: rgba(15, 23, 42, 0.95);
+      cursor: pointer;
+    }
+
+    .burger span {
+      display: block;
+      height: 2px;
+      width: 18px;
+      border-radius: 999px;
+      background: var(--text);
+      position: relative;
+    }
+
+    .burger span::before,
+    .burger span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+    }
+
+    .burger span::before {
+      top: -5px;
+    }
+
+    .burger span::after {
+      bottom: -5px;
+    }
+
+    .mobile-nav {
+      display: none;
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .mobile-nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .mobile-nav-inner a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.2rem 0;
+    }
+
+    .mobile-nav-inner a:hover {
+      color: var(--accent);
+    }
+
+    .mobile-nav-inner .primary-btn {
+      margin-top: 0.4rem;
+      align-self: flex-start;
+    }
+
+    main {
+      margin-top: 1.75rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.6rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-top: 0.35rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
+      gap: 1.9rem;
+      align-items: center;
+    }
+
+    .hero-intro-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+      box-shadow: var(--shadow-chip);
+    }
+
+    .hero-intro-chip span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 4vw, 2.4rem);
+      line-height: 1.15;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(to right, var(--accent), #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-role {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-summary {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.28rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+    }
+
+    .tag strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, border-color 0.15s ease,
+        transform 0.12s ease;
+    }
+
+    .btn-ghost i {
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .hero-location {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-location i {
+      color: #22c55e;
+    }
+
+    .hero-aside {
+      position: relative;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1f2937, #020617);
+      border-radius: 1.5rem;
+      padding: 1.4rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.16), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.14), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-stat-pill {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.88);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-stat-pill i {
+      color: var(--accent);
+      font-size: 0.7rem;
+    }
+
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-stat-card {
+      border-radius: 1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 0.7rem 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    .hero-stat-label {
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-stat-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-stat-meta {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero-tech-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero-tech-cloud span {
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+    }
+
+    /* Experience */
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 1.75rem;
+    }
+
+    .exp-card {
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.2rem 1.1rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at top left,
+        rgba(56, 189, 248, 0.12),
+        transparent 55%
+      );
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .exp-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .exp-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 0.9rem;
+      font-size: 0.82rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-company {
+      font-weight: 600;
+    }
+
+    .exp-title {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .exp-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.72rem;
+    }
+
+    .exp-badge {
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+    }
+
+    .exp-summary {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      font-size: 0.82rem;
+      color: var(--text);
+      padding-left: 0;
+    }
+
+    .exp-bullets li {
+      padding-left: 0.9rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-bullets li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 0.1rem;
+    }
+
+    .timeline {
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      font-size: 0.8rem;
+    }
+
+    .timeline-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-label {
+      color: var(--muted);
+      width: 4.2rem;
+      flex-shrink: 0;
+    }
+
+    .timeline-value {
+      color: var(--text);
+    }
+
+    .timeline-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.45rem;
+    }
+
+    .timeline-stack span {
+      border-radius: 999px;
+      padding: 0.15rem 0.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* Skills */
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 1.6rem;
+    }
+
+    .skills-group {
+      margin-bottom: 1rem;
+    }
+
+    .skills-group-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.27rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .skills-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .skills-aside {
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.8rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .skills-aside h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .skills-aside ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .skills-aside li {
+      margin-bottom: 0.25rem;
+      padding-left: 0.9rem;
+      position: relative;
+      color: var(--muted);
+    }
+
+    .skills-aside li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 0.1rem;
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      padding: 0.95rem 0.95rem 1rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at top right,
+        rgba(56, 189, 248, 0.12),
+        transparent 55%
+      );
+      pointer-events: none;
+    }
+
+    .project-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .project-body {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      font-size: 0.7rem;
+    }
+
+    .project-tech span {
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+    }
+
+    /* Education */
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .edu-card {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 0.95rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.8rem;
+    }
+
+    .edu-inst {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .edu-qual {
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .edu-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Contact */
+
+    .contact-card {
+      border-radius: 1.4rem;
+      padding: 1.2rem 1.2rem 1.3rem;
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 1.3rem;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .contact-main p {
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-main strong {
+      color: var(--text);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .contact-item i {
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    .contact-item span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-item a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+      color: var(--accent);
+    }
+
+    .contact-secondary {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .contact-chip-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.94);
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .contact-chip-link i {
+      color: var(--accent);
+      font-size: 0.75rem;
+    }
+
+    footer {
+      margin-top: 2.4rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      padding-bottom: 0.3rem;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-aside {
+        order: -1;
+      }
+
+      .experience-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .skills-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .edu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav {
+        display: none;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .burger {
+        display: inline-flex;
+      }
+
+      .page-shell {
+        padding-inline: 1rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .edu-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-card {
+        padding: 1rem 0.9rem;
+      }
+
+      .section-title {
+        font-size: 1.25rem;
+      }
+
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+    }
+
+    .mobile-nav.open {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-mark">
+          <span>BN</span>
+        </div>
+        <div>
+          <div class="brand-text-main">Brandon&nbsp;Ngwenya</div>
+          <div class="brand-text-sub">Software Engineer · Cape Town</div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <div class="nav-contact-pill">
+          <i class="fa-solid fa-signal"></i>
+          Open to senior / staff roles
+        </div>
+        <a href="#contact" class="primary-btn">
+          <i class="fa-regular fa-paper-plane"></i>
+          Contact
+        </a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav-inner">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:bervelngwenya@gmail.com" class="primary-btn">
+          <i class="fa-regular fa-envelope"></i>
+          Email me
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div>
+          <div class="hero-intro-chip">
+            <span class="dot"></span>
+            <span>Currently building microservices & cloud-native systems</span>
+          </div>
+
+          <h1 class="hero-title">
+            Brandon&nbsp;Ngwenya
+            <span class="highlight">Software Engineer</span>
+          </h1>
+
+          <p class="hero-role">
+            Designing scalable microservices, optimising distributed systems, and
+            shipping production-quality software across .NET, Python, Angular, and cloud.
+          </p>
+
+          <p class="hero-summary">
+            5+ years building APIs, event-driven systems, and DevOps workflows in
+            high-throughput environments using Azure, AWS, Kubernetes, RabbitMQ, and modern
+            web frameworks.
+          </p>
+
+          <div class="hero-tags">
+            <div class="tag"><strong>Focus:</strong>&nbsp;Microservices · Cloud · DevOps</div>
+            <div class="tag"><strong>Primary:</strong>&nbsp;C# · .NET · Angular</div>
+            <div class="tag"><strong>Also:</strong>&nbsp;Python · Java · React</div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#experience" class="btn-ghost">
+              <i class="fa-solid fa-diagram-project"></i>
+              View experience
+            </a>
+            <a
+              href="https://www.linkedin.com/in/bngweny"
+              target="_blank"
+              rel="noreferrer"
+              class="btn-ghost"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/ngwenyabub"
+              target="_blank"
+              rel="noreferrer"
+              class="btn-ghost"
+            >
+              <i class="fa-brands fa-github"></i>
+              GitHub
+            </a>
+          </div>
+
+          <div class="hero-location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Cape Town, Western Cape · Remote-friendly</span>
+          </div>
+        </div>
+
+        <aside class="hero-aside" aria-label="Snapshot">
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div class="hero-pill-row">
+                <div class="hero-stat-pill">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <span>Cloud-native · Azure · AWS · GCP</span>
+                </div>
+              </div>
+
+              <div class="hero-stat-grid">
+                <div class="hero-stat-card">
+                  <div class="hero-stat-label">Experience</div>
+                  <div class="hero-stat-value">5+ years</div>
+                  <div class="hero-stat-meta">Production systems in finance & legal tech</div>
+                </div>
+                <div class="hero-stat-card">
+                  <div class="hero-stat-label">Impact</div>
+                  <div class="hero-stat-value">40%+</div>
+                  <div class="hero-stat-meta">Manual workload reduction via automation</div>
+                </div>
+              </div>
+
+              <div class="hero-tech-cloud">
+                <span>.NET&nbsp;Core · C#</span>
+                <span>Python · Java</span>
+                <span>Angular · React</span>
+                <span>Azure Functions</span>
+                <span>Azure Service Bus</span>
+                <span>RabbitMQ</span>
+                <span>Kubernetes · Docker</span>
+                <span>Postgres · SQL&nbsp;Server</span>
+                <span>DDD · CQRS · Agile</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="section-header">
+          <div class="section-eyebrow">Experience</div>
+          <h2 class="section-title">Professional experience</h2>
+          <p class="section-subtitle">
+            End-to-end delivery across backend, frontend, and cloud —
+            from greenfield services to production support and optimisation.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <article class="exp-card">
+            <div class="exp-card-inner">
+              <div class="exp-meta">
+                <span class="exp-company">Dye &amp; Durham</span>
+                <span class="exp-title">Software Engineer · Oct 2023 &mdash; Present · Cape Town</span>
+              </div>
+
+              <div class="exp-badge-row">
+                <span class="exp-badge">C# · .NET</span>
+                <span class="exp-badge">Microservices</span>
+                <span class="exp-badge">Kubernetes · Docker</span>
+                <span class="exp-badge">RabbitMQ · PostgreSQL</span>
+              </div>
+
+              <p class="exp-summary">
+                Building and scaling cloud-native microservices for complex order processing
+                and document workflows in a high-volume legal-tech environment.
+              </p>
+
+              <ul class="exp-bullets">
+                <li>
+                  Architected and implemented microservices for complex order processing,
+                  integrating with multiple internal and external data sources.
+                </li>
+                <li>
+                  Developed and maintained backend APIs and services using C# .NET,
+                  Angular, Python, Java, and React to support cross-functional product teams.
+                </li>
+                <li>
+                  Optimised containerised workloads on Kubernetes and Docker, improving
+                  reliability and scalability for database-heavy services.
+                </li>
+                <li>
+                  Integrated RabbitMQ and Postgres with Python-based services to streamline
+                  messaging workflows across microservices.
+                </li>
+                <li>
+                  Drove adoption of DevOps practices, shortening deployment cycles and
+                  increasing system observability and resilience.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <div class="exp-card">
+            <div class="exp-card-inner">
+              <div class="exp-meta">
+                <span class="exp-company">BBD Software</span>
+                <span class="exp-title">Software Engineer · Feb 2019 &mdash; Oct 2023 · Cape Town</span>
+              </div>
+
+              <div class="exp-badge-row">
+                <span class="exp-badge">C# · .NET · Angular</span>
+                <span class="exp-badge">Azure Functions</span>
+                <span class="exp-badge">Azure Service Bus</span>
+                <span class="exp-badge">Agile · DDD · CQRS</span>
+              </div>
+
+              <p class="exp-summary">
+                Worked across multiple client projects as full-stack engineer, leading
+                frontend initiatives, API design, and greenfield platform builds.
+              </p>
+
+              <ul class="exp-bullets">
+                <li>
+                  Designed and developed APIs to streamline sales processes, reducing
+                  manual work by ~40% and improving partner integration.
+                </li>
+                <li>
+                  Led the frontend for a Leave Management System (Angular, C#, Azure),
+                  delivering a production-ready solution in 3 months.
+                </li>
+                <li>
+                  Built a URL shortener and sanitizer on Azure Functions used by 5,000+
+                  employees, improving link safety and governance.
+                </li>
+                <li>
+                  Transitioned to a product-aligned team, owning full-stack responsibilities
+                  for a client system using Angular and C# with DDD and CQRS.
+                </li>
+                <li>
+                  Enhanced inter-service communication using Azure Service Bus, improving
+                  reliability and throughput of critical workflows.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <aside class="timeline" aria-label="Career timeline">
+          <div class="timeline-row">
+            <div class="timeline-label">2019</div>
+            <div class="timeline-value">
+              Joined BBD Software as a Software Engineer, working across consulting
+              and product teams.
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-label">2023</div>
+            <div class="timeline-value">
+              Moved to Dye &amp; Durham to focus on distributed microservices and
+              cloud-native architecture in legal-tech.
+            </div>
+          </div>
+          <div class="timeline-stack">
+            <span>Backend &amp; APIs</span>
+            <span>Frontend Engineering</span>
+            <span>Cloud &amp; DevOps</span>
+            <span>Technical Mentorship</span>
+          </div>
+        </aside>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="section-header">
+          <div class="section-eyebrow">Skills</div>
+          <h2 class="section-title">Technical toolset</h2>
+          <p class="section-subtitle">
+            Strong backend focus with production experience across microservices,
+            web frontends, messaging, and cloud platforms.
+          </p>
+        </div>
+
+        <div class="skills-layout">
+          <div>
+            <div class="skills-group">
+              <div class="skills-group-title">Languages</div>
+              <div class="chip-row">
+                <span class="chip">C#</span>
+                <span class="chip">Java</span>
+                <span class="chip">Python</span>
+                <span class="chip">TypeScript / JavaScript</span>
+              </div>
+            </div>
+
+            <div class="skills-group">
+              <div class="skills-group-title">Frameworks &amp; Libraries</div>
+              <div class="chip-row">
+                <span class="chip">.NET Core / ASP.NET</span>
+                <span class="chip">Angular</span>
+                <span class="chip">React</span>
+                <span class="chip">Azure Functions</span>
+              </div>
+            </div>
+
+            <div class="skills-group">
+              <div class="skills-group-title">Cloud &amp; DevOps</div>
+              <div class="chip-row">
+                <span class="chip">Azure</span>
+                <span class="chip">AWS</span>
+                <span class="chip">GCP (exposure)</span>
+                <span class="chip">Kubernetes</span>
+                <span class="chip">Docker</span>
+                <span class="chip">Azure Service Bus</span>
+                <span class="chip">RabbitMQ</span>
+                <span class="chip">CI/CD · DevOps</span>
+              </div>
+              <div class="skills-note">
+                Experienced with containerisation, message-driven systems, and
+                production-grade observability practices.
+              </div>
+            </div>
+
+            <div class="skills-group">
+              <div class="skills-group-title">Data &amp; Methodologies</div>
+              <div class="chip-row">
+                <span class="chip">Postgres</span>
+                <span class="chip">SQL Server</span>
+                <span class="chip">Relational modelling</span>
+                <span class="chip">Agile · Scrum</span>
+                <span class="chip">Domain-Driven Design (DDD)</span>
+                <span class="chip">CQRS</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="skills-aside">
+            <h3>How I work</h3>
+            <ul>
+              <li>
+                Comfortable collaborating in cross-functional teams and mentoring
+                junior engineers.
+              </li>
+              <li>
+                Pragmatic about architecture: start simple, evolve with domain insight
+                and real usage.
+              </li>
+              <li>
+                Strong focus on observability, testability, and maintainable codebases.
+              </li>
+              <li>
+                Enjoys designing systems around clear domain boundaries and messaging patterns.
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="section-header">
+          <div class="section-eyebrow">Selected work</div>
+          <h2 class="section-title">Projects &amp; highlights</h2>
+          <p class="section-subtitle">
+            A sample of systems and features I've delivered that demonstrate my
+            strengths across the stack.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-card-inner">
+              <h3 class="project-title">Leave Management System</h3>
+              <div class="project-meta">Frontend Lead · BBD Software</div>
+              <p class="project-body">
+                Designed and implemented a leave management web app end-to-end.
+                Led the Angular frontend, integrated with C# APIs, and deployed on Azure
+                with secure authentication and role-based access.
+              </p>
+              <div class="project-tech">
+                <span>Angular</span>
+                <span>C# · .NET</span>
+                <span>Azure</span>
+                <span>CI/CD</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card-inner">
+              <h3 class="project-title">URL Shortener &amp; Sanitizer</h3>
+              <div class="project-meta">Internal tool · 5,000+ users</div>
+              <p class="project-body">
+                Built an internal link shortener and sanitizer service on Azure Functions,
+                improving link governance and security across the organisation.
+              </p>
+              <div class="project-tech">
+                <span>Azure Functions</span>
+                <span>C#</span>
+                <span>Security</span>
+                <span>Observability</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card-inner">
+              <h3 class="project-title">Order Processing Microservices</h3>
+              <div class="project-meta">Dye &amp; Durham</div>
+              <p class="project-body">
+                Microservices responsible for orchestrating complex order flows,
+                integrating multiple data sources and messaging systems to support legal
+                and conveyancing workflows.
+              </p>
+              <div class="project-tech">
+                <span>.NET Microservices</span>
+                <span>RabbitMQ</span>
+                <span>PostgreSQL</span>
+                <span>Kubernetes · Docker</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education">
+        <div class="section-header">
+          <div class="section-eyebrow">Education</div>
+          <h2 class="section-title">Academic background</h2>
+        </div>
+
+        <div class="edu-grid">
+          <article class="edu-card">
+            <div class="edu-inst">University of South Africa (UNISA)</div>
+            <div class="edu-qual">BSc Computing · Part-time</div>
+            <div class="edu-meta">Ongoing · Cape Town</div>
+          </article>
+
+          <article class="edu-card">
+            <div class="edu-inst">WeThinkCode_</div>
+            <div class="edu-qual">Software Engineering · NQF 5</div>
+            <div class="edu-meta">Completed · 2019 · Cape Town</div>
+          </article>
+
+          <article class="edu-card">
+            <div class="edu-inst">University of the Western Cape</div>
+            <div class="edu-qual">BSc Computer Science (coursework)</div>
+            <div class="edu-meta">2016 &ndash; 2017 · Cape Town</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-header">
+          <div class="section-eyebrow">Contact</div>
+          <h2 class="section-title">Let’s talk</h2>
+          <p class="section-subtitle">
+            Interested in working together, or want to discuss a role? Email is best,
+            but I’m also reachable via LinkedIn.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-main">
+            <p>
+              <strong>Looking for:</strong> roles where I can own microservices, APIs,
+              and cloud infrastructure end-to-end, ideally in product-focused teams.
+            </p>
+
+            <div class="contact-grid">
+              <div class="contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <span>Email</span>
+                <a href="mailto:bervelngwenya@gmail.com">bervelngwenya@gmail.com</a>
+              </div>
+              <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <span>Phone</span>
+                <a href="tel:+27730110201">+27&nbsp;73&nbsp;011&nbsp;0201</a>
+              </div>
+              <div class="contact-item">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
+                <a
+                  href="https://www.linkedin.com/in/bngweny"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  linkedin.com/in/bngweny
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-secondary">
+            <div>
+              Prefer a quick overview first? You can also explore my public work:
+            </div>
+            <div class="contact-link-row">
+              <a
+                class="contact-chip-link"
+                href="https://github.com/ngwenyabub"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub · ngwenyabub</span>
+              </a>
+              <a
+                class="contact-chip-link"
+                href="https://www.linkedin.com/in/bngweny"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn profile</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> Brandon Ngwenya.
+    </footer>
+  </div>
+
+  <script>
+    const burger = document.getElementById("burger");
+    const mobileNav = document.getElementById("mobileNav");
+
+    burger.addEventListener("click", () => {
+      mobileNav.classList.toggle("open");
+    });
+
+    // Close mobile nav on link click
+    mobileNav.addEventListener("click", (e) => {
+      if (e.target.tagName.toLowerCase() === "a") {
+        mobileNav.classList.remove("open");
+      }
+    });
+
+    // Footer year
+    document.getElementById("year").textContent =
+      new Date().getFullYear().toString();
+  </script>
+</body>
+</html>
