@@ -2,7 +2,7 @@
 
 const panels = [...document.querySelectorAll('.mode-panel')];
 const modeLinks = [...document.querySelectorAll('[data-mode]')];
-const writingSections = new Set(['off-clock', 'essays']);
+const writingSections = new Set(['off-clock', 'essays', 'other-essays']);
 const workSections = new Set(['work', 'selected-work', 'background']);
 let currentMode;
 
